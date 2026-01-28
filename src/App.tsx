@@ -128,37 +128,38 @@ export default function App() {
       </div>
 
       <DataTable
-        value={artworks}
-        paginator
-        lazy
-        loading={loading}
-        first={first}
-        rows={rows}
-        totalRecords={totalRecords}
-        onPage={handlePageChange}
-        selection={selectedRows}
-        onSelectionChange={handleSelectionChange}
-        dataKey="id"
-      >
-        <Column selectionMode="multiple" style={{ width: "3rem" }} />
-        <Column field="title" header="Title" />
-        <Column field="place_of_origin" header="Place of Origin" />
-        <Column field="artist_display" header="Artist" />
-        <Column field="inscriptions" header="Inscriptions" />
-        <Column field="date_start" header="Start Date" />
-        <Column field="date_end" header="End Date" />
-      </DataTable>
+  value={artworks}
+  paginator
+  lazy
+  loading={loading}
+  first={first}
+  rows={rows}
+  totalRecords={totalRecords}
+  onPage={handlePageChange}
+  selection={selectedRows}
+  onSelectionChange={handleSelectionChange}
+  dataKey="id"
+  selectionMode="multiple" 
+>
+  <Column selectionMode="multiple" style={{ width: "3rem" }} />
+  <Column field="title" header="Title" />
+  <Column field="place_of_origin" header="Place of Origin" />
+  <Column field="artist_display" header="Artist" />
+  <Column field="inscriptions" header="Inscriptions" />
+  <Column field="date_start" header="Start Date" />
+  <Column field="date_end" header="End Date" />
+</DataTable>
 
-      <OverlayPanel ref={overlayRef}>
-        <div className="flex gap-2 items-center">
-          <InputNumber
-            value={selectCount}
-            onValueChange={(e) => setSelectCount(e.value)}
-            placeholder="Rows"
-          />
-          <Button label="Apply" onClick={applyCustomSelection} />
-        </div>
-      </OverlayPanel>
+<OverlayPanel ref={overlayRef}>
+  <div className="flex gap-2 items-center">
+    <InputNumber
+      value={selectCount}
+      onValueChange={(e) => setSelectCount(e.value ?? null)}  
+      placeholder="Rows"
+    />
+    <Button label="Apply" onClick={applyCustomSelection} />
+  </div>
+</OverlayPanel>
     </div>
   );
 }
